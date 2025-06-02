@@ -57,5 +57,10 @@ public class PlayerController : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+       // if(Input.GetButtonDown("Fire1"))
+       // {
+          //  CameraShake.Instance.shake(1.0f, 1.0f);
+       // }
     }
 }
