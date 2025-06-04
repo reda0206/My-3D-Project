@@ -14,10 +14,8 @@ public class CameraShake : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+
+        originalPosition = transform.localPosition;
     }
     void Start()
     {
@@ -29,7 +27,10 @@ public class CameraShake : MonoBehaviour
     {
         
     }
-    public void shake(ShakeCoroutine(Duration, magnitude))
+    public void shake(float duration, float magnitude)
+    {
+        StartCoroutine(ShakeCoroutine(duration, magnitude));
+    }
 
     private IEnumerator ShakeCoroutine(float duration, float magnitude)
     {
@@ -39,7 +40,7 @@ public class CameraShake : MonoBehaviour
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
 
-            transform.localPosition = orignalPosition + new Vector3(x, y, 0f);
+            transform.localPosition = originalPosition + new Vector3(x, y, 0f);
 
             elasped += Time.deltaTime;
             yield return null;
